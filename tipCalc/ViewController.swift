@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         let tipArray = [0.18, 0.2, 0.25]
         
         let bill = Double(billField.text!) ?? 0
-        let tip = bill * tipArray[tipControl, selectedSegmentedIndex]
+        let tip = bill * tipArray[tipControl.selectedSegmentIndex]
         let total = bill + tip
         
         tipLabel.text = String(format: "$%.2f", tip)
