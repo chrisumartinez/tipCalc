@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         
     }
     @IBAction func calculateTip(_ sender: Any) {
-        let tipArray = [0.18, 0.2, 0.25]
+        let tipArray = [0.18, 0.20, 0.25]
         
         let bill = Double(billField.text!) ?? 0
         let tip = bill * tipArray[tipControl.selectedSegmentIndex]
