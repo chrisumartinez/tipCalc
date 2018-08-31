@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var defaultTipControl: UISegmentedControl!
@@ -23,6 +24,9 @@ class SettingsViewController: UIViewController {
     }
     
 
+    @IBAction func updateTheme(_ sender: Any) {
+        
+    }
     @IBAction func makeDefaultTip(_ sender: Any) {
     
         let tipIndex = defaultTipControl.selectedSegmentIndex
