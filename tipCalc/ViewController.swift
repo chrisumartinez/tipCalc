@@ -25,26 +25,66 @@ class ViewController: UIViewController {
     }
 
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let defaults  = UserDefaults.standard
+        tipControl.selectedSegmentIndex = defaults.integer(forKey: "tipIndex")
+        calcUpdatedTip()
+    }
     @IBAction func onTap(_ sender: Any) {
         view.endEditing(true)
         
     }
-    @IBAction func calculateTip(_ sender: Any) {
-
+    
+    func calcUpdatedTip(){
+        
+        //load defaults, grab bill from textfield
         let defaults = UserDefaults.standard
         let bill = Double(billField.text!) ?? 0
         let tipPercentage = [0.18, 0.20, 0.25]
         
         
-        //let tip = bill * tipArray[tipControl.selectedSegmentIndex]
-        var tipValue = defaults.double(forKey: "tipValue")
-        if tipValue == {
-            tipValue = tipPercentage[tipControl.selectedSegmentIndex]
-        }
-    
-        tipControl.selectedSegmentIndex = tipPercentage.index(of: tipValue) ?? 0
+        //set the control from settings
+        
+        //if no previous settings has been set, set to first one:
+        //        if(defaults.integer(forKey: "tipIndex") == nil){
+        //            tipControl.selectedSegmentIndex = 0
+        //        }
+        //        else{
+        //            tipControl.selectedSegmentIndex = defaults.integer(forKey: "tipIndex")
+        //        }
+        
+        
+        let tipValue = tipPercentage[tipControl.selectedSegmentIndex]
         let tip = bill * tipValue
         
+        
+        let total = bill + tip
+        tipLabel.text = String(format: "$%.2f", tip)
+        totalLabel.text = String(format: "$%.2f", total)
+        
+    }
+    @IBAction func calculateTip(_ sender: Any) {
+
+        //load defaults, grab bill from textfield
+        let defaults = UserDefaults.standard
+        let bill = Double(billField.text!) ?? 0
+        let tipPercentage = [0.18, 0.20, 0.25]
+    
+
+        //set the control from settings
+        
+        //if no previous settings has been set, set to first one:
+//        if(defaults.integer(forKey: "tipIndex") == nil){
+//            tipControl.selectedSegmentIndex = 0
+//        }
+//        else{
+//            tipControl.selectedSegmentIndex = defaults.integer(forKey: "tipIndex")
+//        }
+        
+        
+        let tipValue = tipPercentage[tipControl.selectedSegmentIndex]
+        let tip = bill * tipValue
         
         
         let total = bill + tip

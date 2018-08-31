@@ -24,12 +24,13 @@ class SettingsViewController: UIViewController {
     
 
     @IBAction func makeDefaultTip(_ sender: Any) {
-        
-        let tipValue = defaultTipControl.selectedSegmentIndex
+    
+        let tipIndex = defaultTipControl.selectedSegmentIndex
         let defaults = UserDefaults.standard
-        defaults.set(tipValue, forKey: "tipValue")
-        defaults.synchronize()
+        defaults.set(tipIndex, forKey: "tipIndex")
         
+        
+        defaults.synchronize()
     
     }
     /*
